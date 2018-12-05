@@ -4,7 +4,7 @@
 
 PS3='Please enter your choice: '
 options=("Start jacknorthrup/geos Docker" "Stop jacknorthrup/geos Container" "Restart jacknorthrup/geos Container" "Remove jacknorthrup/geos Container" \
-    "Copy Container Dir K3D-jupyter Here" "Enter the Docker Container jupyter-geos" "Firefox http://localhost:8888" "Docker ps" "Quit")
+    "Copy Container Dir jupyter-geos Here" "Enter the Docker Container jupyter-geos" "Firefox http://localhost:8888" "Docker ps" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -21,7 +21,7 @@ do
         "Remove jacknorthrup/geos Container")
             docker rm jupyter-geos
             ;;
-        "Copy Container Dir K3D-jupyter Here")
+        "Copy Container Dir jupyter-geos Here")
             sudo docker cp jupyter-geos:/notebooks/. .
             ;;            
         "Enter the Docker Container jupyter-geos")
