@@ -1,0 +1,12 @@
+{
+    "metadata": {},
+    "objects": [
+        {
+            "type": "TextureText",
+            "color": 65280,
+            "position": [0.0, 0.0, 0.0],
+            "text": "Hello World",
+            "font_face" : "Lato"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+.idea/
+*.egg-info/
+js/dist/
+js/build/
+js/node_modules/
+k3d/static/
+.DS_Store
+.pypirc
+*.pyc
+*~
+.ipynb_checkpoints/
+build/
+dist/
+js/test/assets/Lato-Regular.ttf
+js/dev
+examples/*.vtk
+examples/*.vtp

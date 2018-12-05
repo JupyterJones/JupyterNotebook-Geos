@@ -1,0 +1,38 @@
+.katex-display {
+    margin: 0.25em 0;
+}
+
+.dg input, .dg select {
+    color: black;
+    line-height: normal;
+}
+
+.dg.a {
+    margin-right: 0;
+}
+
+.dg li {
+    margin: 0;
+}
+
+.dg.main {
+    height: inherit;
+}
+
+.dg.main .close-button.close-bottom {
+    position: relative !important;
+}
+
+.dg.main.taller-than-window .close-button.close-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.dg.main.taller-than-window > ul > li:last-child {
+    margin-bottom: 20px;
+}
+
+.k3d-target canvas {
+    position: relative;
+    z-index: 10;
+}

@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>programing-documents-index</title>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<style>
+	p{
+		text-align:left;
+	}
+
+</style>
+<body>
+<div class = "sectT">
+<h1>Run Interactively</h1>
+
+Run the docker using -i -t or -it together in order use a tty shell.<br />
+<pre>
+$ docker run -it jacknorthrup/jupyter-k3d
+$ docker run -it jacknorthrup/jupyter-k3d bash
+</pre>
+<br />
+<h2 id = "TOP" >Using the Menu</h2>
+<a href="#menu">View the menu file</a>
+<p>Once the image is build or pulled the menu may be used to run the image, stop the container or remove the container.<br />
+simply choose the number associated with the desired command:<br />
+Start Jupyter-k3d Docker:<br />
+Starts a jupyter notebook at http://localhost:8888<br />
+If the port is busy. The notebook will start on the next available port example:<br />
+htttp:localhost:8888<br />
+--------------------<br />
+Stop Jupyter-k3d Container:<br />
+Stops, but does not remove a running docker container.<br />
+--------------------<br />
+Restart Jupyter-k3d Container:<br />
+Will restart the existing container named Jupyter-k3d<br />
+--------------------<br />
+Remove Jupyter-k3d Container:<br />
+Removes the container and its contentents
+--------------------<br />
+Copy Container Dir K3D-jupyter Here:<br />
+Copys the Contents of the Container directory K3D-jupyter here. 
+--------------------<br />
+Enter the Docker Container jupyter-k3d:<br />
+Enter into the container.<br />
+--------------------<br />
+Quit Menu:<br />
+Stops only the "Menu" containers or image may stay open.<br />
+</p><br />
+Jupyter Notebook with K3D<br />
+Full Description<br />
+.. contents:: Table of contents<br />
+:depth: 2<br />
+
+Full description<br />
+The jacknorthrup/jupyter-k3d <https://hub.docker.com/r/jacknorthrup/jupyter-k3d/>_ Docker image with K3D and Storm csv Files.<br />
+
+Docker Hub
+The jacknorthrup/jupyter-k3d <https://hub.docker.com/r/jacknorthrup/jupyter-k3d/>_ repo.<br />
+<pre><code>
+
+QuickStart:
+USE THE MENU
+enter ./Menu
+
+$ docker run -d -p 8888:8888 -u root jacknorthrup/jupyter-k3d:latest
+
+Detached
+To start a container in detached mode, use -d or --detach option. 
+
+$ docker run -d -p HOST_PORT:CONTAINER_PORT -u USERNAME IMAGE
+$ docker run -d -p 8888:8888 -u root jacknorthrup/jupyter-k3d:latest
+$ docker run --detach -p HOST_PORT:CONTAINER_PORT -u USERNAME IMAGE
+$ docker run --detach -p 8888:8888 -u root jacknorthrup/jupyter-k3d:latest
+
+Where:
+-d or --detach -- run container in background and print container ID.
+Ports
+You can bind Docker containers to specific ports using the -p or --publish option, for example::
+$ docker run -d -p HOST_PORT:CONTAINER_PORT -u USERNAME IMAGE
+$ docker run -d -p 8888:8888 -u root jacknorthrup/jupyter-k3d:latest
+$ docker run -d --publish HOST_PORT:CONTAINER_PORT -u USERNAME IMAGE
+$ docker run -d --publish 8888:8888 -u root jacknorthrup/jupyter-k3d:latest
+
+Where:
+-p or --publish -- publish a container's port(s) to the host.
+
+Users
+You can start a container with root user by passing the -u option::
+$ docker run -d -p HOST_PORT:CONTAINER_PORT -u USERNAME IMAGE
+$ docker run -d -p 8888:8888 -u root jacknorthrup/jupyter-k3d:latest
+$ docker run -d -p HOST_PORT:CONTAINER_PORT --user USERNAME IMAGE
+$ docker run -d -p 8888:8888 --user root -v $(pwd)/work:/home/jovyan/work jacknorthrup/jupyter-k3d:latest
+$ docker run -d -p 8888:8888 --user root -v $(pwd)/K3D-jupyter:/home/jovyan/K3D-jupyter jacknorthrup/jupyter-k3d:latest
+
+Docker Pull Command
+docker pull jacknorthrup/jupyter-k3d:latest
+Owner
+jacknortrup
+Source Repository
+  jacknorthrup/jupyter-k3d:latest
+</code></pre><br /><br />
+<a style = "font-size:24px;color:red;text-align:left;" href="#TOP">RETURN TO TOP</a>
+<pre id = "menu">
+  #!/bin/bash
+#  Bash Menu Script Example
+
+PS3='Please enter your choice: '
+options=("Start Jupyter-k3d Docker" "Stop Jupyter-k3d Container" "Restart Jupyter-k3d Container" "Remove Jupyter-k3d Container" \
+    "Copy Container Dir K3D-jupyter Here" "Enter the Docker Container jupyter-k3d" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Start Jupyter-k3d Docker")
+            echo "Open http://localhost:8888 wiyh your browser. "
+            docker run -d --name jupyter-k3d -p 8888:8888 --user root -v $(pwd)/work:/home/jovyan/work jacknorthrup/jupyter-k3d:latest
+            ;;        
+        "Stop Jupyter-k3d Container")
+            docker stop jupyter-k3d
+            ;;
+        "Restart Jupyter-k3d Container")
+            docker start jupyter-k3d
+            ;;            
+        "Remove Jupyter-k3d Container")
+            docker rm jupyter-k3d
+            ;;
+        "Copy Container Dir K3D-jupyter Here")
+            sudo docker cp jupyter-k3d:/home/jovyan/K3D-jupyter/. .
+            ;;            
+        "Enter the Docker Container jupyter-k3d")
+            docker exec -it jupyter-k3d bash
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
+</pre>
