@@ -4,6 +4,10 @@ Notebook Created to visualize CVS Storm data on Basemap generated maps using Jup
 
 ![screenshot](d2018_c20181017.data_storms.png)
 
+![screenshot](foo.png)
+
+![screenshot](d2011_c20180718.data_storms.png)
+
 
 ## How to
 
