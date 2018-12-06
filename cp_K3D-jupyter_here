@@ -1,2 +1,0 @@
-#!/bin/bash
-sudo docker cp 2163aa0683f9:/home/jovyan/K3D-jupyter/. .
