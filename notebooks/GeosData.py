@@ -21,11 +21,11 @@ def insert(data):
     conn.text_factory = str
     c = conn.cursor()    
     c.execute("INSERT into PROJECT values (?)", (data,))
-    for row in c.execute("SELECT ROWID,* FROM PROJECT ORDER BY ROWID DESC LIMIT 1"):
-        print ("\nPOST VERIFIED:\n",row[0],row[1])
+    #for row in c.execute("SELECT ROWID,* FROM PROJECT ORDER BY ROWID DESC LIMIT 1"):
+    #    print ("\nPOST VERIFIED:\n",row[0],row[1])
     conn.commit()
     conn.close()
-    return data
+    return #data
 
 def search(data):
     import sqlite3

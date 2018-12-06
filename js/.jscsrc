@@ -1,7 +1,0 @@
-{
-    "preset": "crockford",
-    "disallowDanglingUnderscores": null,
-    "validateIndentation": null,
-    "requireLineFeedAtFileEnd": true,
-    "excludeFiles": ["app/**/_dependencies.js"]
-}
