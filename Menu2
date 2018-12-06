@@ -1,0 +1,44 @@
+#!/bin/bash
+#  Bash Menu Script Example
+
+
+PS3='Please enter your choice: '
+options=("Start jacknorthrup/geos Docker" "Stop jacknorthrup/geos Container" "Restart jacknorthrup/geos Container" "Remove jacknorthrup/geos Container" \
+    "Copy Container Dir jupyter-geos Here" "Enter the Docker Container jupyter-geos" "Firefox http://localhost:8888" "Docker ps" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Start jacknorthrup/geos Docker")
+            echo "Open http://localhost:8888 with your browser. "
+            docker run -d --name jupyter-geos2  -it -p 8888:8888 --user root -v $(pwd)/notebooks:/notebooks jacknorthrup/geos:latest
+            ;;        
+        "Stop jacknorthrup/geos Container")
+            docker stop jupyter-geos2
+            ;;
+        "Restart jacknorthrup/geos Container")
+            docker start jupyter-geos2
+            ;;            
+        "Remove jacknorthrup/geos Container")
+            docker rm jupyter-geos2
+            ;;
+        "Copy Container Dir jupyter-geos Here")
+            sudo docker cp jupyter-geos2:/notebooks/. .
+            ;;            
+        "Enter the Docker Container jupyter-geos")
+            docker exec -it jupyter-geos2 bash
+            ;;
+        "Firefox http://localhost:8888")
+            firefox http://localhost:8888
+            ;; 
+        "Docker ps")
+            docker ps
+            ;; 
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
+# key-pem-csr-info.html
+#pip install jupyter_nbextensions_configurator
+#jupyter nbextensions_configurator enable         
